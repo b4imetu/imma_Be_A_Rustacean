@@ -1,3 +1,4 @@
+include!("funcs.rs");
 fn main() {
     //变量默认是不可改变的（immutable）
     //不能对不可变变量 x 二次赋值
@@ -19,22 +20,76 @@ fn main() {
     let x = x + 1;
     let x = x * 2;
     println!("The value of x is: {}", x);
+    // The value of x is: 12
 
     let a = [3; 5];
     for elem in a.iter() {
         print!("{} ", elem);
     }
     println!();
+    // 3 3 3 3 3
 
     let spaces = "   ";
     let spaces = spaces.len();
     println!("The value of spaces is: {}", spaces);
-
     println!("Hello, world!");
-    another_function(5, 6);
-}
 
-fn another_function(x: i32, y: i32) {
-    println!("The value of x is: {}", x);
-    println!("The value of y is: {}", y);
+    // The value of spaces is: 3
+    // Hello, world!
+
+    another_function(5, 6);
+    // The value of x is: 5
+    // The value of y is: 6
+
+    // *loops*
+    // loop {
+    //     println!("again!");
+    // }
+    // ctrl-c，来终止一个陷入无限循环的程序
+
+    //
+    let a = [10, 20, 30, 40, 50];
+    for element in a.iter() {
+        println!("the value is: {}", element);
+    }
+    // the value is: 10
+    // the value is: 20
+    // the value is: 30
+    // the value is: 40
+    // the value is: 50
+
+    //
+    for number in (1..4).rev() {
+        println!("{}!", number);
+    }
+    println!("LIFTOFF!!!");
+    // 3!
+    // 2!
+    // 1!
+    // LIFTOFF!!!
+
+    let mut s = String::from("hello");
+    s.push_str(", world!"); // push_str() 在字符串后追加字面值
+    println!("{}", s); // 将打印 `hello, world!`
+                       // hello, world!
+
+    let s1 = String::from("hello");
+    let len = calculate_length(&s1);
+    println!("The length of '{}' is {}.", s1, len);
+    // The length of 'hello' is 5.
+
+    // 可变引用
+    let mut s = String::from("hello");
+    change(&mut s);
+
+    // 可变引用
+    let mut s = String::from("hello");
+    let r1 = &s; // 没问题
+    let r2 = &s; // 没问题
+    println!("{} and {}", r1, r2);
+    // 此位置之后 r1 和 r2 不再使用
+    let r3 = &mut s; // 没问题
+    println!("{}", r3);
+    // hello and hello
+    // hello
 }
