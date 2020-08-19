@@ -1,4 +1,5 @@
 include!("funcs.rs");
+include!("structs.rs");
 fn main() {
     //变量默认是不可改变的（immutable）
     //不能对不可变变量 x 二次赋值
@@ -92,4 +93,34 @@ fn main() {
     println!("{}", r3);
     // hello and hello
     // hello
+
+    // 结构体 struct User
+    // let user1 = User {
+    //     email: "someone@example.com",
+    //     username: "someusername123",
+    //     active: true,
+    //     sign_in_count: 1,
+    // };
+    // error[E0106]: missing lifetime specifier
+
+    // 一个使用结构体的示例程序
+    // 示例 5-8：通过分别指定长方形的宽和高的变量来计算长方形面积
+    // let width1 = 30;
+    // let height1 = 50;
+    // println!(
+    //     "The area of the rectangle is {} square pixels.",
+    //     area(width1, height1)
+    // );
+    // The area of the rectangle is 1500 square pixels.
+
+    // 示例 5-10：定义 Rectangle 结构体
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(&rect1)
+    );
+    // The area of the rectangle is 1500 square pixels.
 }
